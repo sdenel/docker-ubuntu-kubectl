@@ -20,4 +20,6 @@ apt clean && \
 echo "alias k='kubectl'" >> /root/.bashrc && \
 echo "source <(kubectl completion bash)" >> ~/.bashrc && \
 mkdir -p /root/.kube && \
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && \
+echo 'if [ $commands[kubectl] ]; then\n  source <(kubectl completion zsh)\nfi' >> /root/.zshrc && \
+echo "alias k='kubectl'" >> /root/.zshrc
