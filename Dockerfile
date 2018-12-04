@@ -18,8 +18,12 @@ apt-get update && \
 apt-get install -y kubectl && \
 apt clean && \
 echo "alias k='kubectl'" >> /root/.bashrc && \
+echo "alias k='kubectl'" >> /root/.zshrc \
 echo "source <(kubectl completion bash)" >> ~/.bashrc && \
 mkdir -p /root/.kube && \
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && \
 echo 'if [ $commands[kubectl] ]; then\n  source <(kubectl completion zsh)\nfi' >> /root/.zshrc && \
-echo "alias k='kubectl'" >> /root/.zshrc
+curl -L https://git.io/getLatestIstio | sh - \
+cd istio-* \
+echo "export PATH=$PWD/bin:$PATH" > ~/.bashrc \
+echo "export PATH=$PWD/bin:$PATH" > ~/.zshrc
