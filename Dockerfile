@@ -26,4 +26,7 @@ echo 'if [ $commands[kubectl] ]; then\n  source <(kubectl completion zsh)\nfi' >
 curl -L https://git.io/getLatestIstio | sh - \
 cd istio-* \
 echo "export PATH=$PWD/bin:$PATH" > ~/.bashrc \
-echo "export PATH=$PWD/bin:$PATH" > ~/.zshrc
+echo "export PATH=$PWD/bin:$PATH" > ~/.zshrc \
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh \
+chmod 700 get_helm.sh \
+./get_helm.sh
